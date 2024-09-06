@@ -1,0 +1,32 @@
+{
+    "tasks": [
+        {
+            "id": 1,
+            "title": "Sample task",
+            "description": "Task description",
+            "status": "in-progress",
+            "userId": 2
+        },
+        {
+            "id": 2,
+            "title": "Sample other task 2",
+            "description": "Other description",
+            "status": "done",
+            "userId": 1
+        }
+    ],
+    "users": [
+        {
+            "id": 1,
+            "username": "awjames",
+            "email": "awwaladarsh@gmail.com",
+            "password": "12345"
+        },
+        {
+            "id": 2,
+            "username": "awjames2",
+            "email": "awwaladarsh123@gmail.com",
+            "password": "12345"
+        }
+    ]
+}
