@@ -39,17 +39,19 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <UserProvider>
-        <body
-          className={cn(
-            "min-h-screen bg-background font-sans antialiased",
-            fontSans.variable
-          )}
-        >
-          {children}
-          
-        </body>
-      </UserProvider>
+      <ThemeProvider>
+        <UserProvider>
+          <body
+            className={cn(
+              "min-h-screen bg-background font-sans antialiased",
+              fontSans.variable
+            )}
+          >
+            {children}
+            
+          </body>
+        </UserProvider>
+      </ThemeProvider>
     </html>
   )
 }
