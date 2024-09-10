@@ -11,7 +11,7 @@ function LoginHeader({className}: LoginHeaderType) {
   return (
     <Image className={
         cn("items-center justify-center", className)
-    } width={40} height={40} alt="paypal-logo" src={`paypal-mark-color.svg`}></Image>
+    } width={60} height={60} alt="paypal-logo" src={`paypal-mark-color.svg`}></Image>
   )
 }
 
