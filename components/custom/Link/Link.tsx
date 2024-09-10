@@ -3,7 +3,8 @@ import { ChildrenType } from '@/types/ChildrenType'
 import Link from 'next/link'
 import React from 'react'
 
-interface CustomLinkType extends ChildrenType {
+interface CustomLinkType extends ChildrenType 
+{
     className: string
     href: string
 }

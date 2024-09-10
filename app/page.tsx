@@ -4,6 +4,7 @@ import { useUser } from '@auth0/nextjs-auth0/client'
 
 function page() {
   const {user, error, isLoading} = useUser();
+  const dataSession = sessionStorage.getItem('dataUser')
   console.log(user)
   if(isLoading) return <div>Loading...</div>
   if(error) return <div>{error?.message}</div>
@@ -11,6 +12,8 @@ function page() {
     return (
       <div>
       <a title="test" href="/api/auth/logout">logout</a>
+      {dataSession ? dataSession : ''}
+
     </div>
     )
   }
