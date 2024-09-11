@@ -39,24 +39,20 @@ function Login() {
       router.push('/')
   }
 
-  const validateUser = async () => {
+  const doLogin = async () => {
     const FormData = require('form-data');
     let data = new FormData();
     data.append('email', email);
     data.append('password', password);
-    
-
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
       url: 'http://localhost:3000/api/logged',
       data : data
     };
-
-    
     axios.request(config)
     .then(async (response) => {
-      // router.push("/")
+      // router.push('/mfa-selection')
       console.log(response.data.data.showMFA)
       // await mfaUser(response)
       setShowOtp(true)
@@ -66,6 +62,11 @@ function Login() {
       console.log(error);
     });
   }
+
+  const doSignup = () => {
+    router.push('/signup')
+  }
+
   return (
     <div className={
       cn("min-w-screen flex items-center justify-center my-20", 'bg-background')
@@ -75,6 +76,7 @@ function Login() {
         }>
           <>
             <LoginHeader className="my-4"></LoginHeader>
+            <br/>
             <Input value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email or mobile number' className={
               cn("h-16 w-100 px-2 mx-2 my-2 w-full")
             }/>
@@ -84,19 +86,18 @@ function Login() {
             <Input type="password" value={otp} onChange={(e) => setOtp(e.target.value)} placeholder='otp' className={
               cn("h-16 w-100 px-2 mx-2 my-2 w-full",showOtp ? '' :'hidden')
             }/>
-            <CustomLink href={`/forgot-email`} className='text-blue-500 my-2 self-start'>Forgot email?</CustomLink>
-            <Button variant={`default`} onClick={validateUser} className='my-6'>Login</Button>
+            <CustomLink href={`/login-id-recovery`} className='text-blue-500 my-2 self-start'><b>Forgot email or mobile number?</b></CustomLink>
+            <Button variant={`default`} onClick={doLogin} className='my-6'>Login</Button>
             <Button variant={`secondary`} onClick={mfaUser} className={cn('my-6 ',showOtp ? '' :'hidden')}>mfa validate</Button>
-            {/* <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => {
-                console.log("reached", theme)
-                setTheme(theme === "light" ? "dark" : "light")
-              }}
-            >{theme}</Button> */}
             <CustomLink href={`/api/auth/login`} className='text-blue-500 my-2'>Auth0 Login</CustomLink>
             <LoginFooter></LoginFooter>
+            <br/>
+            <div className="flex">
+              <div className="flex-1 border-t border-gray-800"></div>
+                <span className="mx-4 text-gray-800">Or</span>
+              <div className="flex-row border-t border-gray-800"></div>
+            </div>
+            <Button onClick={doSignup} variant={`outline`} className='my-6'>Sign Up</Button>
           </>
           </Border>
       </div>
