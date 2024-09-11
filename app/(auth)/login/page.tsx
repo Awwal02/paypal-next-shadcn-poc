@@ -54,9 +54,11 @@ function Login() {
     .then(async (response) => {
       // router.push('/mfa-selection')
       console.log(response.data.data.showMFA)
+      sessionStorage.setItem('mfaValidateToken', response.data.data.mfaToken)
+      router.push('/verify-user')
       // await mfaUser(response)
-      setShowOtp(true)
-      setResponse(response)
+      // setShowOtp(true)
+      // setResponse(response)
     })
     .catch((error) => {
       console.log(error);
