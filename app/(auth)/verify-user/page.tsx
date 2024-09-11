@@ -79,15 +79,15 @@ const VerifyUser = () => {
                       value={value}
                       onChange={(value) => setValue(value)}>
                         <InputOTPGroup>
-                            <InputOTPSlot index={0} />
-                            <InputOTPSlot index={1} />
-                            <InputOTPSlot index={2} />
-                        {/* </InputOTPGroup>
+                            <InputOTPSlot index={0} className={cn(`mx-2 border`)}/>
+                            <InputOTPSlot index={1} className={cn(`mx-2 border`)}/>
+                            <InputOTPSlot index={2} className={cn(`mx-2 border`)}/>
+                        </InputOTPGroup>
                         <InputOTPSeparator />
-                        <InputOTPGroup> */}
-                            <InputOTPSlot index={3} />
-                            <InputOTPSlot index={4} />
-                            <InputOTPSlot index={5} />
+                        <InputOTPGroup>
+                            <InputOTPSlot index={3} className={cn(`mx-2 border`)}/>
+                            <InputOTPSlot index={4} className={cn(`mx-2 border`)}/>
+                            <InputOTPSlot index={5} className={cn(`mx-2 border`)}/>
                         </InputOTPGroup>
                     </InputOTP>
 
