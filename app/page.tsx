@@ -1,6 +1,8 @@
 "use client";
 import React from 'react'
 import { useUser } from '@auth0/nextjs-auth0/client'
+import { BeakerIcon } from '@heroicons/react/24/solid'
+
 
 function page() {
   const {user, error, isLoading} = useUser();
@@ -12,6 +14,7 @@ function page() {
     return (
       <div>
       <a title="test" href="/api/auth/logout">logout</a>
+      <BeakerIcon className="size-6 text-blue-500" />
       {dataSession ? dataSession : ''}
 
     </div>
@@ -20,6 +23,7 @@ function page() {
   return (
     <div>
       <a title="test" href="/api/auth/login">Login</a>
+      <BeakerIcon className="size-6 text-blue-500" />
     </div>
   )
 }

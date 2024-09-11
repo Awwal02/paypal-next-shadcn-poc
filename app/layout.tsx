@@ -8,6 +8,7 @@ import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 import {UserProvider } from '@auth0/nextjs-auth0/client'
+import LoginFooter from "@/components/custom/LoginFooter/LoginFooter"
 
 export const metadata: Metadata = {
   title: {
@@ -48,7 +49,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
             )}
           >
             {children}
-            
           </body>
         </UserProvider>
       </ThemeProvider>

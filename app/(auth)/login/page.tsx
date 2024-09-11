@@ -11,6 +11,7 @@ import { useTheme } from 'next-themes'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { redirect } from 'next/navigation'
+import LoginFooter from '@/components/custom/LoginFooter/LoginFooter'
 
 function Login() {
   const {theme, setTheme} = useTheme()
@@ -67,10 +68,10 @@ function Login() {
   }
   return (
     <div className={
-      cn("min-h-screen min-w-screen flex items-center justify-center", 'bg-background')
+      cn("min-w-screen flex items-center justify-center my-20", 'bg-background')
     }>
         <Border className={
-          cn('flex flex-col p-8 w-3/5')
+          cn('flex flex-col p-8 w-full lg:w-2/5')
         }>
           <>
             <LoginHeader className="my-4"></LoginHeader>
@@ -95,6 +96,7 @@ function Login() {
               }}
             >{theme}</Button> */}
             <CustomLink href={`/api/auth/login`} className='text-blue-500 my-2'>Auth0 Login</CustomLink>
+            <LoginFooter></LoginFooter>
           </>
           </Border>
       </div>
