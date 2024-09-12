@@ -13,6 +13,7 @@ import {
     InputOTPSlot,
   } from "@/components/ui/input-otp"
 import axios from 'axios'
+import { isBrowser } from '@/lib/windowChecker'
 
 
 const VerifyUser = () => {
@@ -37,7 +38,10 @@ const VerifyUser = () => {
 
     const mfaUser = async () => {
         let data2 = new FormData()
-        let mfaValidationToken = window?.sessionStorage?.getItem('mfaValidateToken') as string
+        let mfaValidationToken = ''
+        if(isBrowser()) {
+            mfaValidationToken = window?.sessionStorage?.getItem('mfaValidateToken') as string
+        }
           data2.append('otp', value);
           data2.append('mfaToken', mfaValidationToken)
           let config2 = {
@@ -48,7 +52,9 @@ const VerifyUser = () => {
             mfaToken: mfaValidationToken
           };
           let responseData = await axios.request(config2)
-          window?.sessionStorage?.setItem('dataUser', JSON.stringify(responseData))
+          if(isBrowser()) {
+              window?.sessionStorage?.setItem('dataUser', JSON.stringify(responseData))
+          }
           console.log(JSON.stringify(responseData));
           if(sessionStorage.getItem('country') === 'FR' || sessionStorage.getItem('country') === 'fr') {
               router.push('/mfa-selection')

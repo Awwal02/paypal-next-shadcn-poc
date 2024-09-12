@@ -12,6 +12,7 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { redirect } from 'next/navigation'
 import LoginFooter from '@/components/custom/LoginFooter/LoginFooter'
+import { isBrowser } from '@/lib/windowChecker'
 
 function Login() {
   const {theme, setTheme} = useTheme()
@@ -34,7 +35,9 @@ function Login() {
         mfaToken: response.data.data.mfaToken
       };
       let responseData = await axios.request(config2)
-      window?.sessionStorage?.setItem('dataUser', JSON.stringify(responseData))
+      if(isBrowser()) {
+        window?.sessionStorage?.setItem('dataUser', JSON.stringify(responseData))
+      }
       console.log(JSON.stringify(responseData));
       router.push('/')
   }
@@ -55,7 +58,9 @@ function Login() {
     .then(async (response) => {
       // router.push('/mfa-selection')
       console.log(response.data.data.showMFA)
-      window?.sessionStorage?.setItem('mfaValidateToken', response.data.data.mfaToken)
+      if(isBrowser()) {
+        window?.sessionStorage?.setItem('mfaValidateToken', response.data.data.mfaToken)
+      }
       router.push('/verify-user')
       // await mfaUser(response)
       // setShowOtp(true)
