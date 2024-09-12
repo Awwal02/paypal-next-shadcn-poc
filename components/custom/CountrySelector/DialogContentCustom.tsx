@@ -16,7 +16,7 @@ import BorderedHr from '../BorderedHr/BorderedHr'
 import FlagWithName from '../FlagWithName/FlagWithName'
 import dynamic from 'next/dynamic'
 
-export const DialogContent2 = React.forwardRef<
+const DialogContentCustom = React.forwardRef<
   any, any
 >(({clickCountryDropdown, handleCLoseDialog}, ref) => {
     const FlagNameComp = dynamic(() => import("../FlagWithName/FlagWithName"))
@@ -60,4 +60,6 @@ export const DialogContent2 = React.forwardRef<
   )
 })
 
-export default DialogContent2
+DialogContentCustom.displayName = 'DialogContentCustom'
+
+export default DialogContentCustom

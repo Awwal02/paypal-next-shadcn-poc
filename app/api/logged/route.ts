@@ -1,22 +1,7 @@
-import * as  axios from 'axios'
-import type { NextApiRequest, NextApiResponse } from 'next'
- 
-type ResponseData = {
-  message: string
-}
- 
-export const GET = (
-  req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
-) => {
-  console.log(req, res)
-  return new Response('Hello, Next.js!', {
-    status: 200
-  })
-}
+import axios from 'axios'
 
 const validateUser = async (email: string, password: string) => {
-  var axios = require("axios").default;
+  // var axios = require("axios").default;
 
     var options = {
       method: 'POST',

@@ -3,10 +3,10 @@ import React from 'react'
 import { cn } from "@/lib/utils"
 import Border from '@/components/custom/Border/Border'
 import LoginHeader from '@/components/custom/LoginHeader/LoginHeader'
-import { Input } from '@/components/shadcn/input'
+import { Input } from '@/components/ui/input'
 import Link from 'next/link'
 import CustomLink from '@/components/custom/Link/Link'
-import { Button } from '@/components/shadcn/button'
+import { Button } from '@/components/ui/button'
 import { useTheme } from 'next-themes'
 import { useRouter } from "next/navigation"
 import { RadioGroup, RadioGroupItem} from "@/components/ui/radio-group"

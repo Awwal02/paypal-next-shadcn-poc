@@ -1,16 +1,16 @@
 "use client";
 import React from 'react'
-import { useUser } from '@auth0/nextjs-auth0/client'
+// import { useUser } from '@auth0/nextjs-auth0/client'
 import { BeakerIcon } from '@heroicons/react/24/solid'
 
 
 function page() {
-  const {user, error, isLoading} = useUser();
-  const dataSession = sessionStorage.getItem('dataUser')
-  console.log(user)
-  if(isLoading) return <div>Loading...</div>
-  if(error) return <div>{error?.message}</div>
-  if(user) {
+  // const {user, error, isLoading} = useUser();
+  const dataSession = window?.sessionStorage.getItem('dataUser')
+  // console.log(user)
+  // if(isLoading) return <div>Loading...</div>
+  // if(error) return <div>{error?.message}</div>
+  if(true) {
     return (
       <div>
       <a title="test" href="/api/auth/logout">logout</a>

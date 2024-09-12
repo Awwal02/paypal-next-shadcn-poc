@@ -16,19 +16,19 @@ import FlagWithIcon from "../FlagWithIcon/FlagWithIcon"
 import FlagWithName from "../FlagWithName/FlagWithName"
 import LoginHeader from "../LoginHeader/LoginHeader"
 import { Label } from "@/components/ui/label"
-import { Button } from "@/components/shadcn/button"
-import { Input } from "@/components/shadcn/input"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import Image from "next/image"
 import { ChevronDown } from "lucide-react"
 
 import { countryCode } from "@/lib/country"
-import DialogContent2 from "./DialogContent2"
+import DialogContent2 from "./DialogContentCustom"
 import dynamic from "next/dynamic"
 
 function CountrySelector({flag, clickCountryDropdown}: {flag: string, clickCountryDropdown: (x: string) => void}) {
     const dialogButtonRef = useRef<any>()
     const closButtonRef = useRef<any>()
-    const LazyLoadedDialog = dynamic(import("./DialogContent2"))
+    const LazyLoadedDialog = dynamic(import("./DialogContentCustom"))
 
     const handleCLoseDialog = () => {
       dialogButtonRef.current.secondRefFn()

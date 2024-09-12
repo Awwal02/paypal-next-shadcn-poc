@@ -3,10 +3,10 @@ import React from 'react'
 import { cn } from "@/lib/utils"
 import Border from '@/components/custom/Border/Border'
 import LoginHeader from '@/components/custom/LoginHeader/LoginHeader'
-import { Input } from '@/components/shadcn/input'
+import { Input } from '@/components/ui/input'
 import Link from 'next/link'
 import CustomLink from '@/components/custom/Link/Link'
-import { Button } from '@/components/shadcn/button'
+import { Button } from '@/components/ui/button'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
 import { Select } from "@/components/ui/select"
@@ -46,13 +46,13 @@ function LoginIdRecovery() {
                     <br/>
                     <br/>
             <Input placeholder='Email 1 or mobile number 1' className={
-              cn("h-16 w-80 px-2 mx-2 my-2 w-full")
+              cn("h-16 w-80 px-2 mx-2 my-2")
             }/>
             <Input placeholder='Email 2 or mobile number 2' className={
-              cn("h-16 w-80 px-2 mx-2 my-2 w-full")
+              cn("h-16 w-80 px-2 mx-2 my-2")
             }/>
             <Input placeholder='Email 3 or mobile number 3' className={
-              cn("h-16 w-80 px-2 mx-2 my-2 w-full")
+              cn("h-16 w-80 px-2 mx-2 my-2")
             }/>
             
             <Button onClick={doLoginIdRecovery} variant={`default`} className='my-6'>Next</Button>

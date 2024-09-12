@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 import { cn } from "@/lib/utils"
 import Border from '@/components/custom/Border/Border'
 import LoginHeader from '@/components/custom/LoginHeader/LoginHeader'
-import { Input } from '@/components/shadcn/input'
+import { Input } from '@/components/ui/input'
 import Link from 'next/link'
 import CustomLink from '@/components/custom/Link/Link'
-import { Button } from '@/components/shadcn/button'
+import { Button } from '@/components/ui/button'
 import { useTheme } from 'next-themes'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
@@ -34,7 +34,7 @@ function Login() {
         mfaToken: response.data.data.mfaToken
       };
       let responseData = await axios.request(config2)
-      sessionStorage.setItem('dataUser', JSON.stringify(responseData))
+      window?.sessionStorage?.setItem('dataUser', JSON.stringify(responseData))
       console.log(JSON.stringify(responseData));
       router.push('/')
   }
@@ -54,7 +54,7 @@ function Login() {
     .then(async (response) => {
       // router.push('/mfa-selection')
       console.log(response.data.data.showMFA)
-      sessionStorage.setItem('mfaValidateToken', response.data.data.mfaToken)
+      window?.sessionStorage?.setItem('mfaValidateToken', response.data.data.mfaToken)
       router.push('/verify-user')
       // await mfaUser(response)
       // setShowOtp(true)
@@ -91,7 +91,7 @@ function Login() {
             <CustomLink href={`/login-id-recovery`} className='text-blue-500 my-2 self-start'><b>Forgot email or mobile number?</b></CustomLink>
             <Button variant={`default`} onClick={doLogin} className='my-6'>Login</Button>
             <Button variant={`secondary`} onClick={mfaUser} className={cn('my-6 ',showOtp ? '' :'hidden')}>mfa validate</Button>
-            <CustomLink href={`/api/auth/login`} className='text-blue-500 my-2'>Auth0 Login</CustomLink>
+            <CustomLink href={`/api/auth/login`} className='text-blue-500 my-2 font-bold'>Auth0 Login</CustomLink>
             <LoginFooter></LoginFooter>
             <br/>
             <div className="flex">
