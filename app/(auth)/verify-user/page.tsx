@@ -21,7 +21,7 @@ const VerifyUser = () => {
 
     const doOtpVerification = () => {
         mfaUser()
-        router.push('/dashboard')
+        router.push('/step-up')
         //TODO:
         // try {
         //     //await axios.post("/api/users/login", user)
@@ -57,7 +57,7 @@ const VerifyUser = () => {
             cn("min-h-screen min-w-screen flex items-center justify-center")
         }>
             <Border className={
-                cn('flex flex-col p-8 w-3/5')
+                cn('flex flex-col p-8 w-full lg:w-2/5')
             }>
                 <>
                     <LoginHeader className="my-4"></LoginHeader>
