@@ -11,6 +11,7 @@ import { useTheme } from 'next-themes'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { redirect } from 'next/navigation'
+import LoginFooter from '@/components/custom/LoginFooter/LoginFooter'
 
 function Login() {
   const {theme, setTheme} = useTheme()
@@ -53,9 +54,11 @@ function Login() {
     .then(async (response) => {
       // router.push('/mfa-selection')
       console.log(response.data.data.showMFA)
+      sessionStorage.setItem('mfaValidateToken', response.data.data.mfaToken)
+      router.push('/verify-user')
       // await mfaUser(response)
-      setShowOtp(true)
-      setResponse(response)
+      // setShowOtp(true)
+      // setResponse(response)
     })
     .catch((error) => {
       console.log(error);
@@ -68,10 +71,10 @@ function Login() {
 
   return (
     <div className={
-      cn("min-h-screen min-w-screen flex items-center justify-center", 'bg-background')
+      cn("min-w-screen flex items-center justify-center my-20", 'bg-background')
     }>
         <Border className={
-          cn('flex flex-col p-8 w-3/5')
+          cn('flex flex-col p-8 w-full lg:w-2/5')
         }>
           <>
             <LoginHeader className="my-4"></LoginHeader>
@@ -88,15 +91,8 @@ function Login() {
             <CustomLink href={`/login-id-recovery`} className='text-blue-500 my-2 self-start'><b>Forgot email or mobile number?</b></CustomLink>
             <Button variant={`default`} onClick={doLogin} className='my-6'>Login</Button>
             <Button variant={`secondary`} onClick={mfaUser} className={cn('my-6 ',showOtp ? '' :'hidden')}>mfa validate</Button>
-            {/* <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => {
-                console.log("reached", theme)
-                setTheme(theme === "light" ? "dark" : "light")
-              }}
-            >{theme}</Button> */}
             <CustomLink href={`/api/auth/login`} className='text-blue-500 my-2'>Auth0 Login</CustomLink>
+            <LoginFooter></LoginFooter>
             <br/>
             <div className="flex">
               <div className="flex-1 border-t border-gray-800"></div>

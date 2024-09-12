@@ -12,6 +12,7 @@ import {
     InputOTPSeparator,
     InputOTPSlot,
   } from "@/components/ui/input-otp"
+import axios from 'axios'
 
 
 const VerifyUser = () => {
@@ -19,6 +20,7 @@ const VerifyUser = () => {
     const router = useRouter()
 
     const doOtpVerification = () => {
+        mfaUser()
         router.push('/dashboard')
         //TODO:
         // try {
@@ -32,6 +34,24 @@ const VerifyUser = () => {
         //     //setLoading(false)
         // }
     }
+
+    const mfaUser = async () => {
+        let data2 = new FormData()
+        let mfaValidationToken = sessionStorage.getItem('mfaValidateToken') as string
+          data2.append('otp', value);
+          data2.append('mfaToken', mfaValidationToken)
+          let config2 = {
+            method: 'post',
+            maxBodyLength: Infinity,
+            url: 'http://localhost:3000/api/mfa-otp',
+            data : data2,
+            mfaToken: mfaValidationToken
+          };
+          let responseData = await axios.request(config2)
+          sessionStorage.setItem('dataUser', JSON.stringify(responseData))
+          console.log(JSON.stringify(responseData));
+        //   router.push('/')
+      }
     return (
         <div className={
             cn("min-h-screen min-w-screen flex items-center justify-center")
@@ -59,15 +79,15 @@ const VerifyUser = () => {
                       value={value}
                       onChange={(value) => setValue(value)}>
                         <InputOTPGroup>
-                            <InputOTPSlot index={0} />
-                            <InputOTPSlot index={1} />
-                            <InputOTPSlot index={2} />
-                        {/* </InputOTPGroup>
+                            <InputOTPSlot index={0} className={cn(`mx-2 border`)}/>
+                            <InputOTPSlot index={1} className={cn(`mx-2 border`)}/>
+                            <InputOTPSlot index={2} className={cn(`mx-2 border`)}/>
+                        </InputOTPGroup>
                         <InputOTPSeparator />
-                        <InputOTPGroup> */}
-                            <InputOTPSlot index={3} />
-                            <InputOTPSlot index={4} />
-                            <InputOTPSlot index={5} />
+                        <InputOTPGroup>
+                            <InputOTPSlot index={3} className={cn(`mx-2 border`)}/>
+                            <InputOTPSlot index={4} className={cn(`mx-2 border`)}/>
+                            <InputOTPSlot index={5} className={cn(`mx-2 border`)}/>
                         </InputOTPGroup>
                     </InputOTP>
 
