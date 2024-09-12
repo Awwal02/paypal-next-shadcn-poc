@@ -23,6 +23,7 @@ function LoginFooter() {
     const [flag, setFlag] = useState<string>('ca');
   const clickCountryDropdown = (code: string) => {
     setFlag(code)
+    sessionStorage.setItem('country', code)
     console.log("clickCountryDropdown", code)
   }
   return (

@@ -40,7 +40,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+      {/* <ThemeProvider attribute="class" defaultTheme="light" enableSystem> */}
         <UserProvider>
           <body
             className={cn(
@@ -51,7 +51,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             {children}
           </body>
         </UserProvider>
-      </ThemeProvider>
+      {/* </ThemeProvider> */}
     </html>
   )
 }

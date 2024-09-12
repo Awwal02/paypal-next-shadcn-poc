@@ -1,8 +1,8 @@
 "use client"
 import { useState } from 'react';
 import { Label } from '@/components/ui/label';
-import { Button } from '@/components/shadcn/button'
-import { Input } from '@/components/shadcn/input'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import LoginHeader from '@/components/custom/LoginHeader/LoginHeader';
 import { cn } from "@/lib/utils"
 import Border from '@/components/custom/Border/Border'
@@ -39,7 +39,7 @@ const KycPage = () => {
         setDocError('Please upload your identification document.');
         return;
     }
-    if (document && document.type !== 'application/pdf') {
+    if (document && (document as any).type !== 'application/pdf') {
         setDocError('Please upload a PDF document only.');
         return;
       }
@@ -90,7 +90,7 @@ const KycPage = () => {
                 <div>
                     <h2 className="text-2xl font-bold mb-4">Upload Your ID Document</h2>
                     <p className="mb-4">
-                        Please upload a clear photo or scan of a government-issued ID (e.g., passport, driver's license, or national ID card). This will help us verify your identity.
+                        Please upload a clear photo or scan of a government-issued ID (e.g., passport, drivers license, or national ID card). This will help us verify your identity.
                     </p>
                     <br/>
                     <input type="file" onChange={handleDocumentUpload} className="mb-4 text-center" />

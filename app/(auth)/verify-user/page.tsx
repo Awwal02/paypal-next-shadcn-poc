@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 import Border from '@/components/custom/Border/Border'
 import LoginHeader from '@/components/custom/LoginHeader/LoginHeader'
 import CustomLink from '@/components/custom/Link/Link'
-import { Button } from '@/components/shadcn/button'
+import { Button } from '@/components/ui/button'
 import { useRouter } from "next/navigation"
 import {
     InputOTP,
@@ -13,6 +13,7 @@ import {
     InputOTPSlot,
   } from "@/components/ui/input-otp"
 import axios from 'axios'
+import { isBrowser } from '@/lib/windowChecker'
 
 
 const VerifyUser = () => {
@@ -37,7 +38,10 @@ const VerifyUser = () => {
 
     const mfaUser = async () => {
         let data2 = new FormData()
-        let mfaValidationToken = sessionStorage.getItem('mfaValidateToken') as string
+        let mfaValidationToken = ''
+        if(isBrowser()) {
+            mfaValidationToken = window?.sessionStorage?.getItem('mfaValidateToken') as string
+        }
           data2.append('otp', value);
           data2.append('mfaToken', mfaValidationToken)
           let config2 = {
@@ -48,9 +52,15 @@ const VerifyUser = () => {
             mfaToken: mfaValidationToken
           };
           let responseData = await axios.request(config2)
-          sessionStorage.setItem('dataUser', JSON.stringify(responseData))
+          if(isBrowser()) {
+              window?.sessionStorage?.setItem('dataUser', JSON.stringify(responseData))
+          }
           console.log(JSON.stringify(responseData));
-        //   router.push('/')
+          if(sessionStorage.getItem('country') === 'FR' || sessionStorage.getItem('country') === 'fr') {
+              router.push('/mfa-selection')
+          } else {
+            router.push('/mfa-selection')
+          }
       }
     return (
         <div className={
@@ -91,7 +101,7 @@ const VerifyUser = () => {
                         </InputOTPGroup>
                     </InputOTP>
 
-                    <Button onClick={doOtpVerification} variant={`default`} className='my-6'>Submit</Button>
+                    <Button onClick={mfaUser} variant={`default`} className='my-6'>Submit</Button>
                     <CustomLink href={`/verify-user`} className='text-blue-500 my-2'>Send New Code</CustomLink>
                 </>
             </Border>
