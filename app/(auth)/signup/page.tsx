@@ -35,7 +35,8 @@ function SignUp() {
           return alert('success signup without login!') 
       });
       setTimeout(() => {
-        router.push('/dashboard')
+        // loginUser(email, password, )
+        router.push('/api/auth/login')
       },500)
 }
 

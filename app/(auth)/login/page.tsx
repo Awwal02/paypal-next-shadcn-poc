@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation'
 import { redirect } from 'next/navigation'
 import LoginFooter from '@/components/custom/LoginFooter/LoginFooter'
 import { isBrowser } from '@/lib/windowChecker'
+import { loginUser } from '@/lib/mfaUser'
 
 function Login() {
   const {theme, setTheme} = useTheme()
@@ -43,32 +44,7 @@ function Login() {
   }
 
   const doLogin = async () => {
-    //router.push('/mfa-selection')
-    const FormData = require('form-data');
-    let data = new FormData();
-    data.append('email', email);
-    data.append('password', password);
-    let config = {
-      method: 'post',
-      maxBodyLength: Infinity,
-      url: 'http://localhost:3000/api/logged',
-      data : data
-    };
-    axios.request(config)
-    .then(async (response) => {
-      // router.push('/mfa-selection')
-      console.log(response.data.data.showMFA)
-      if(isBrowser()) {
-        window?.sessionStorage?.setItem('mfaValidateToken', response.data.data.mfaToken)
-      }
-      router.push('/verify-user')
-      // await mfaUser(response)
-      // setShowOtp(true)
-      // setResponse(response)
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    await loginUser(email, password, router)
   }
 
   const doSignup = () => {
