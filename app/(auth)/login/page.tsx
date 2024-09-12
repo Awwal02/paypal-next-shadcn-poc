@@ -40,6 +40,7 @@ function Login() {
   }
 
   const doLogin = async () => {
+    //router.push('/mfa-selection')
     const FormData = require('form-data');
     let data = new FormData();
     data.append('email', email);
@@ -71,7 +72,7 @@ function Login() {
 
   return (
     <div className={
-      cn("min-w-screen flex items-center justify-center my-20", 'bg-background')
+      cn("min-h-screen min-w-screen flex items-center justify-center")
     }>
         <Border className={
           cn('flex flex-col p-8 w-full lg:w-2/5')
@@ -92,7 +93,6 @@ function Login() {
             <Button variant={`default`} onClick={doLogin} className='my-6'>Login</Button>
             <Button variant={`secondary`} onClick={mfaUser} className={cn('my-6 ',showOtp ? '' :'hidden')}>mfa validate</Button>
             <CustomLink href={`/api/auth/login`} className='text-blue-500 my-2'>Auth0 Login</CustomLink>
-            <LoginFooter></LoginFooter>
             <br/>
             <div className="flex">
               <div className="flex-1 border-t border-gray-800"></div>
@@ -100,6 +100,7 @@ function Login() {
               <div className="flex-row border-t border-gray-800"></div>
             </div>
             <Button onClick={doSignup} variant={`outline`} className='my-6'>Sign Up</Button>
+            <LoginFooter></LoginFooter>
           </>
           </Border>
       </div>
