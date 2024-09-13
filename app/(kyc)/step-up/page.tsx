@@ -64,10 +64,10 @@ const KycPage = () => {
 
   return (
     <div className={
-        cn("min-h-screen min-w-screen flex items-center justify-center")
+        cn("min-w-screen flex min-h-screen items-center justify-center")
     }>
         <Border className={
-            cn('flex flex-col p-8 w-full lg:w-2/5')
+            cn('flex w-full flex-col p-8 lg:w-2/5')
         }>
             <>
                 <LoginHeader className="my-4"></LoginHeader>
@@ -78,23 +78,23 @@ const KycPage = () => {
                 </div>
                 <br/>
                 <br/>
-                <div className="flex items-center mb-6">
-                    <div className={`flex-1 text-center py-2 font-bold ${step === 1 ? 'text-blue-500 border-b-2 border-blue-300' : 'text-gray-500'}`}>
+                <div className="mb-6 flex items-center">
+                    <div className={`flex-1 py-2 text-center font-bold ${step === 1 ? 'border-b-2 border-blue-300 text-blue-500' : 'text-gray-500'}`}>
                         Step 1: Upload Document
                     </div>
-                    <div className={`flex-1 text-center py-2 font-bold ${step === 2 ? 'text-blue-500 border-b-2 border-blue-300' : 'text-gray-500'}`}>
+                    <div className={`flex-1 py-2 text-center font-bold ${step === 2 ? 'border-b-2 border-blue-300 text-blue-500' : 'text-gray-500'}`}>
                         Step 2: Enter SSN
                     </div>
                 </div>
                 {step === 1 && (
                 <div>
-                    <h2 className="text-2xl font-bold mb-4">Upload Your ID Document</h2>
+                    <h2 className="mb-4 text-2xl font-bold">Upload Your ID Document</h2>
                     <p className="mb-4">
                         Please upload a clear photo or scan of a government-issued ID (e.g., passport, drivers license, or national ID card). This will help us verify your identity.
                     </p>
                     <br/>
                     <input type="file" onChange={handleDocumentUpload} className="mb-4 text-center" />
-                    {docError && <p className="text-red-500 mb-4">{docError}</p>}
+                    {docError && <p className="mb-4 text-red-500">{docError}</p>}
                     <br/>
                     <br/>
                     <Button onClick={handleSubmitDocument} className="w-full">
@@ -104,15 +104,15 @@ const KycPage = () => {
                 )}
                 {step === 2 && (
                 <div>
-                    <h2 className="text-2xl font-bold mb-4">Enter Your Social Security Number (SSN)</h2>
+                    <h2 className="mb-4 text-2xl font-bold">Enter Your Social Security Number (SSN)</h2>
                     <p className="mb-4">
                         Provide your Social Security Number (SSN) to complete the identity verification process. Your SSN will be securely processed and will help us confirm your identity.
                     </p>
-                    <Label htmlFor="ssn" className="block mb-2">
+                    <Label htmlFor="ssn" className="mb-2 block">
                         SSN
                     </Label>
                     <Input type="text" id="ssn" value={ssn} onChange={handleSsnChange} className="mb-4" />
-                    {ssnError && <p className="text-red-500 mb-4">{ssnError}</p>}
+                    {ssnError && <p className="mb-4 text-red-500">{ssnError}</p>}
                     <Button onClick={handleSubmitSsn} className="w-full">
                         Submit SSN
                     </Button>

@@ -2,7 +2,7 @@ import React from 'react'
 
 function BorderedHr() {
   return (
-    <div className="w-full border-solid border"></div>
+    <div className="w-full border border-solid"></div>
   )
 }
 

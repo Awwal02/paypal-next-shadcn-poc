@@ -9,7 +9,7 @@ type BorderType = {
 function Border({children, className}: BorderType) {
   return (
     <div className={
-        cn("p-4 rounded-lg lg:border-2 items-center justify-center text-center", className)
+        cn("items-center justify-center rounded-lg p-4 text-center lg:border-2", className)
       }>{children}</div>
   )
 }

@@ -21,18 +21,18 @@ const DialogContentCustom = React.forwardRef<
 >(({clickCountryDropdown, handleCLoseDialog}, ref) => {
     const FlagNameComp = dynamic(() => import("../FlagWithName/FlagWithName"))
   return (
-    <DialogContent className="w-full h-full max-w-full" ref={ref}>
+    <DialogContent className="size-full max-w-full" ref={ref}>
         <DialogHeader className={cn("items-center")}>
           <DialogTitle className="flex">
             <LoginHeader
-              className={`flex justify-center items-center`}
+              className={`flex items-center justify-center`}
             ></LoginHeader>
           </DialogTitle>
           {/* <DialogDescription>
         Anyone who has this link will be able to view this.
       </DialogDescription> */}
         </DialogHeader>
-        <div className="flex column items-center flex-wrap max-w-5xl m-auto h-full overflow-scroll">
+        <div className="column m-auto flex h-full max-w-5xl flex-wrap items-center overflow-scroll">
           {countryCode.map(([code, name, breakNewLine]) => {
             return (
               <div

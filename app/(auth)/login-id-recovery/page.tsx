@@ -31,10 +31,10 @@ function LoginIdRecovery() {
 
   return (
     <div className={
-      cn("min-h-screen min-w-screen flex items-center justify-center")
+      cn("min-w-screen flex min-h-screen items-center justify-center")
     }>
         <Border className={
-          cn('flex flex-col p-8 w-full lg:w-2/5')
+          cn('flex w-full flex-col p-8 lg:w-2/5')
         }>
           <>
             <LoginHeader className="my-4"></LoginHeader>
@@ -46,17 +46,17 @@ function LoginIdRecovery() {
                     <br/>
                     <br/>
             <Input placeholder='Email 1 or mobile number 1' className={
-              cn("h-16 w-80 px-2 mx-2 my-2")
+              cn("m-2 h-16 w-80 px-2")
             }/>
             <Input placeholder='Email 2 or mobile number 2' className={
-              cn("h-16 w-80 px-2 mx-2 my-2")
+              cn("m-2 h-16 w-80 px-2")
             }/>
             <Input placeholder='Email 3 or mobile number 3' className={
-              cn("h-16 w-80 px-2 mx-2 my-2")
+              cn("m-2 h-16 w-80 px-2")
             }/>
             
             <Button onClick={doLoginIdRecovery} variant={`default`} className='my-6'>Next</Button>
-            <CustomLink href={`/login`} className='text-blue-500 my-2 text-center'>Return to login</CustomLink>
+            <CustomLink href={`/login`} className='my-2 text-center text-blue-500'>Return to login</CustomLink>
           </>
           </Border>
       </div>

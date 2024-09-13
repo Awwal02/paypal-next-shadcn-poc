@@ -64,10 +64,10 @@ const VerifyUser = () => {
       }
     return (
         <div className={
-            cn("min-h-screen min-w-screen flex items-center justify-center")
+            cn("min-w-screen flex min-h-screen items-center justify-center")
         }>
             <Border className={
-                cn('flex flex-col p-8 w-full lg:w-2/5')
+                cn('flex w-full flex-col p-8 lg:w-2/5')
             }>
                 <>
                     <LoginHeader className="my-4"></LoginHeader>
@@ -102,7 +102,7 @@ const VerifyUser = () => {
                     </InputOTP>
 
                     <Button onClick={mfaUser} variant={`default`} className='my-6'>Submit</Button>
-                    <CustomLink href={`/verify-user`} className='text-blue-500 my-2'>Send New Code</CustomLink>
+                    <CustomLink href={`/verify-user`} className='my-2 text-blue-500'>Send New Code</CustomLink>
                 </>
             </Border>
         </div>

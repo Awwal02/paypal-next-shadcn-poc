@@ -46,10 +46,10 @@ function SignUp() {
     <>
     <Script async={true} src="https://cdn.auth0.com/js/auth0/9.11/auth0.min.js" strategy='lazyOnload'/>
     <div className={
-      cn("min-h-screen min-w-screen flex items-center justify-center")
+      cn("min-w-screen flex min-h-screen items-center justify-center")
     }>
         <Border className={
-          cn('flex flex-col p-8 w-full lg:w-2/5')
+          cn('flex w-full flex-col p-8 lg:w-2/5')
         }>
           <>
             <LoginHeader className="my-4"></LoginHeader>
@@ -61,24 +61,24 @@ function SignUp() {
             <br/>
             <br/>
             <Input placeholder="First name" className={
-              cn("h-14 w-80 px-2 mx-2 my-2")
+              cn("m-2 h-14 w-80 px-2")
             }/>
             <Input placeholder="Middle name" className={
-              cn("h-14 w-80 px-2 mx-2 my-2")
+              cn("m-2 h-14 w-80 px-2")
             }/>
             <Input placeholder="Last name" className={
-              cn("h-14 w-80 px-2 mx-2 my-2")
+              cn("m-2 h-14 w-80 px-2")
             }/>
             <Input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email address" className={
-              cn("h-14 w-80 px-2 mx-2 my-2")
+              cn("m-2 h-14 w-80 px-2")
             }/>
             <Input value={password} type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password" className={
-              cn("h-14 w-80 px-2 mx-2 my-2")
+              cn("m-2 h-14 w-80 px-2")
             }/>
             
             <Button onClick={createUser} variant={`default`} className="my-6">Agree and Create Account</Button>
             <>
-            <>Already have an account?</><CustomLink href={`/login`} className="text-blue-500 my-2"><b>Login</b></CustomLink>
+            <>Already have an account?</><CustomLink href={`/login`} className="my-2 text-blue-500"><b>Login</b></CustomLink>
             </>
             
 

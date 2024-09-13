@@ -9,7 +9,7 @@ interface CodeName {
 
 function FlagWithName({ code, name, onClick }: CodeName) {
   return (
-    <div className="flex px-5 m-2 cursor-pointer" onClick={() => onClick(code)}>
+    <div className="m-2 flex cursor-pointer px-5" onClick={() => onClick(code)}>
       <Image
         alt={name as string}
         height={20}

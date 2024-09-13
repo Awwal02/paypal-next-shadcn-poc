@@ -53,27 +53,27 @@ function Login() {
 
   return (
     <div className={
-      cn("min-h-screen min-w-screen flex items-center justify-center")
+      cn("min-w-screen flex min-h-screen items-center justify-center")
     }>
         <Border className={
-          cn('flex flex-col p-8 w-full lg:w-2/5')
+          cn('flex w-full flex-col p-8 lg:w-2/5')
         }>
           <>
             <LoginHeader className="my-4"></LoginHeader>
             <br/>
             <Input value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email or mobile number' className={
-              cn("h-16 w-100 px-2 mx-2 my-2 w-full")
+              cn("w-100 m-2 h-16 w-full px-2")
             }/>
             <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder='password' className={
-              cn("h-16 w-100 px-2 mx-2 my-2 w-full")
+              cn("w-100 m-2 h-16 w-full px-2")
             }/>
             <Input type="password" value={otp} onChange={(e) => setOtp(e.target.value)} placeholder='otp' className={
-              cn("h-16 w-100 px-2 mx-2 my-2 w-full",showOtp ? '' :'hidden')
+              cn("w-100 m-2 h-16 w-full px-2",showOtp ? '' :'hidden')
             }/>
-            <CustomLink href={`/login-id-recovery`} className='text-blue-500 my-2 self-start'><b>Forgot email or mobile number?</b></CustomLink>
+            <CustomLink href={`/login-id-recovery`} className='my-2 self-start text-blue-500'><b>Forgot email or mobile number?</b></CustomLink>
             <Button variant={`default`} onClick={doLogin} className='my-6'>Login</Button>
             <Button variant={`secondary`} onClick={mfaUser} className={cn('my-6 ',showOtp ? '' :'hidden')}>mfa validate</Button>
-            <CustomLink href={`/api/auth/login`} className='text-blue-500 my-2 font-bold'>Auth0 Login</CustomLink>
+            <CustomLink href={`/api/auth/login`} className='my-2 font-bold text-blue-500'>Auth0 Login</CustomLink>
             <LoginFooter></LoginFooter>
             <br/>
             <div className="flex">

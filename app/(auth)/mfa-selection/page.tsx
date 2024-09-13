@@ -31,10 +31,10 @@ const MFASelection = () => {
     }
     return (
         <div className={
-            cn("min-h-screen min-w-screen flex items-center justify-center")
+            cn("min-w-screen flex min-h-screen items-center justify-center")
           }>
               <Border className={
-                cn('flex flex-col p-8 w-full lg:w-2/5')
+                cn('flex w-full flex-col p-8 lg:w-2/5')
               }>
                 <>
                     <LoginHeader className="my-4"></LoginHeader>
