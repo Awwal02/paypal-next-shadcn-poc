@@ -17,7 +17,7 @@ const MFASelection = () => {
     const router = useRouter()
 
     const receiveOtp = () => {
-        router.push("/verify-user")
+        router.push("/")
         // try {
         //     //await axios.post("/api/users/login", user)
         //     toast.success("OTP verification Successfull");

@@ -14,6 +14,7 @@ import {
   } from "@/components/ui/input-otp"
 import axios from 'axios'
 import { isBrowser } from '@/lib/windowChecker'
+import { setCookie } from '@/config/setCookie'
 
 
 const VerifyUser = () => {
@@ -54,12 +55,13 @@ const VerifyUser = () => {
           let responseData = await axios.request(config2)
           if(isBrowser()) {
               window?.sessionStorage?.setItem('dataUser', JSON.stringify(responseData))
+            //   setCookie('token', responseData.data.data.access_token, 10)
           }
           console.log(JSON.stringify(responseData));
           if(sessionStorage.getItem('country') === 'FR' || sessionStorage.getItem('country') === 'fr') {
               router.push('/mfa-selection')
           } else {
-            router.push('/mfa-selection')
+            router.push('/challenge-questions')
           }
       }
     return (

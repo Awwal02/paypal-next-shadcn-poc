@@ -10,20 +10,17 @@ import { useTheme } from "next-themes"
 import { useRouter } from "next/navigation"
 import dynamic from "next/dynamic"
 import Script from "next/script"
-import axios from "axios"
-
-
 
 function SignUp() {
   const {theme, setTheme} = useTheme()
   const router = useRouter()
-  const [email, setEmail] = useState<string>()
-  const [password, setPassword] = useState<string>()
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
 
   const createUser = async () => {
     var webAuth = new (window as any).auth0.WebAuth({
-      //domain
-      //clientId
+        // domain
+        // clientId
       });
       
       webAuth.signup({ 
@@ -31,8 +28,9 @@ function SignUp() {
         email: email, 
         password: password
       }, function (err: any) { 
-        if (err) return alert('Something went wrong: ' + err?.message); 
-          return alert('success signup without login!') 
+        console.log("success Login !")
+        // if (err) return alert('Something went wrong: ' + err?.message); 
+        //   return alert('success signup without login!') 
       });
       setTimeout(() => {
         // loginUser(email, password, )

@@ -9,14 +9,20 @@ import CustomLink from '@/components/custom/Link/Link'
 import { Button } from '@/components/ui/button'
 import { useTheme } from 'next-themes'
 import axios from 'axios'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { redirect } from 'next/navigation'
 import LoginFooter from '@/components/custom/LoginFooter/LoginFooter'
 import { isBrowser } from '@/lib/windowChecker'
 import { loginUser } from '@/lib/mfaUser'
 
 function Login() {
-  const {theme, setTheme} = useTheme()
+  const searchParams = useSearchParams()
+ 
+  const search = searchParams.get('partner') || (isBrowser()  && window.sessionStorage.getItem('searchParam')) || ''
+
+  const {theme, setTheme} = useTheme();
+  console.log("search", search)
+  setTheme(search)
   const router = useRouter()
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
@@ -82,7 +88,6 @@ function Login() {
               <div className="flex-row border-t border-gray-800"></div>
             </div>
             <Button onClick={doSignup} variant={`outline`} className='my-6'>Sign Up</Button>
-            <LoginFooter></LoginFooter>
           </>
           </Border>
       </div>
