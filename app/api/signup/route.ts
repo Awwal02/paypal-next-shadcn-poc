@@ -2,8 +2,8 @@ import * as auth0 from './auth0'
 
 const createUser = async (email: string, password: string) => {
     var webAuth = new (auth0 as any).WebAuth({
-        domain:       'dev-q3y4z1etwkxqxi43.us.auth0.com',
-        clientID:     'WmWlPnr2UV1qNH0sJxvg6esQis4TaQX6'
+        // domain:   
+        // clientID:     
       });
       
       webAuth.signup({ 
